@@ -81,14 +81,14 @@ public interface TransferFunction {
     public static TransferFunction TF_PQ = new TransferFunction() {
         @Override
         public double fromLinear(double f) {
-            double d = Math.pow(f, 0.159423828125D);
+            double d = Math.pow(f, 0.1593017578125D);
             return Math.pow((0.8359375D + 18.8515625D * d) / (1D + 18.6875D * d), 78.84375D);
         }
 
         @Override
         public double toLinear(double f) {
             double d = Math.pow(f, 0.012683313515655965121D);
-            return Math.pow((d - 0.8359375D) / (18.8515625D + 18.6875D * d), 6.2725880551301684533D);
+            return Math.pow(Math.max(d - 0.8359375D, 0D) / (18.8515625D - 18.6875D * d), 6.2773946360153256705D);
         }
     };
 
